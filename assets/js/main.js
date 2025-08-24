@@ -1030,26 +1030,7 @@ var swiperProject = new Swiper(".rr-services-2-active", {
 			});
 		});
 	}
-	$('#contact-us__form').submit(function (event) {
-		event.preventDefault();
-		var form = $(this);
-		$('.loading-form').show();
 
-		setTimeout(function () {
-			$.ajax({
-				type: form.attr('method'),
-				url: form.attr('action'),
-				data: form.serialize()
-			}).done(function (data) {
-				$('.loading-form').hide();
-				$('#contact-us__form').append('<p class="success-message mt-3 mb-0">Your message has been sent successfully.</p>');
-			}).fail(function (data) {
-				$('.loading-form').hide();
-				$('#contact-us__form').append('<p class="error-message mt-3 mb-0">Something went wrong. Please try again later.</p>');
-
-			});
-		}, 1000);
-	});
 
 	// ------------------------------------------------------------
 	// Global "Book Now" Popup Form Injection & Handlers
@@ -1069,21 +1050,13 @@ var swiperProject = new Swiper(".rr-services-2-active", {
 				.popup-form .close-btn { position: absolute; top: 20px; right: 25px; font-size: 30px; color: #aaa; cursor: pointer; transition: color .3s ease; }
 				.popup-form .close-btn:hover { color: #333; }
 				.popup-form .form-header { text-align: center; margin-bottom: 30px; }
+				.popup-form .text-center { text-align: center; }
+				.popup-form .mb-4 { margin-bottom: 1.5rem; }
 				.popup-form .form-header h2 { color: #333; margin-bottom: 10px; font-size: 28px; }
 				.popup-form .form-header p { color: #666; font-size: 16px; }
-				.popup-form .form-group { margin-bottom: 20px; }
-				.popup-form .form-row { display: flex; gap: 15px; }
-				.popup-form .form-row .col { flex: 1; }
-				.popup-form label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
-				.popup-form .form-control { width: 100%; padding: 12px 15px; border: 2px solid #e1e5e9; border-radius: 10px; font-size: 16px; transition: border-color .3s ease, box-shadow .3s ease; background-color: #fff; }
-				.popup-form .form-control:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,.1); }
-				.popup-form textarea.form-control { resize: vertical; min-height: 100px; }
-				.popup-form .submit-btn { width: 100%; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color: #fff; padding: 15px; border: none; border-radius: 10px; font-size: 18px; font-weight: 600; cursor: pointer; transition: all .3s ease; margin-top: 10px; }
-				.popup-form .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 25px rgba(102,126,234,.3); }
-				.popup-form .required { color: #e74c3c; }
-				.popup-form .conditional-field { display: none; opacity: 0; transition: opacity .3s ease; }
-				.popup-form .conditional-field.show { display: block; opacity: 1; }
-				@media (max-width: 768px) { .popup-form { padding: 30px 20px; margin: 10px; } .popup-form .form-row { flex-direction: column; gap: 0; } .popup-form .form-header h2 { font-size: 24px; } }
+				.popup-form .submit-btn { display: inline-block; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color: #fff; padding: 15px 30px; border: none; border-radius: 10px; font-size: 18px; font-weight: 600; cursor: pointer; transition: all .3s ease; margin-top: 10px; text-decoration: none; }
+				.popup-form .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 25px rgba(102,126,234,.3); color: #fff; text-decoration: none; }
+				@media (max-width: 768px) { .popup-form { padding: 30px 20px; margin: 10px; } .popup-form .form-header h2 { font-size: 24px; } }
 			`;
 			var styleTag = document.createElement('style');
 			styleTag.id = 'booking-popup-styles';
@@ -1101,106 +1074,22 @@ var swiperProject = new Swiper(".rr-services-2-active", {
 						<h2 id="bookingFormTitle">Event Booking Form</h2>
 						<p>Kindly provide us with the following information</p>
 					</div>
-					<form target="_blank" action="https://formsubmit.co/eventzbytwinkle@gmail.com" method="POST" id="bookingForm">
-						<input type="hidden" name="_subject" value="New Event Booking Request">
-						<input type="hidden" name="_captcha" value="false">
-						<div class="form-group">
-							<div class="form-row">
-								<div class="col">
-									<label for="fullName">Full Name <span class="required">*</span></label>
-									<input type="text" id="fullName" name="fullName" class="form-control" placeholder="Enter your full name" required>
-								</div>
-								<div class="col">
-									<label for="email">Email Address <span class="required">*</span></label>
-									<input type="email" id="email" name="email" class="form-control" placeholder="your@email.com" required>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="form-row">
-								<div class="col">
-									<label for="contact">Contact Number <span class="required">*</span></label>
-									<input type="tel" id="contact" name="contact" class="form-control" placeholder="Your phone number" required>
-								</div>
-								<div class="col">
-									<label for="eventType">Type of Event <span class="required">*</span></label>
-									<select id="eventType" name="eventType" class="form-control" required>
-										<option value="">Select event type</option>
-										<option value="Wedding">Wedding</option>
-										<option value="Corporate Event">Corporate Event</option>
-										<option value="Birthday Party">Birthday Party</option>
-										<option value="Conference">Conference</option>
-										<option value="Other">Other</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="form-group conditional-field" id="generalEventFields">
-							<div class="form-row">
-								<div class="col">
-									<label for="eventVenue">Event Venue/Location</label>
-									<input type="text" id="eventVenue" name="eventVenue" class="form-control" placeholder="Enter venue or location">
-								</div>
-								<div class="col">
-									<label for="guestsEng">Number of Guests</label>
-									<input type="number" id="guestsEng" name="guestsEng" class="form-control" placeholder="Expected number of guests" min="1">
-								</div>
-							</div>
-						</div>
-						<div class="form-group conditional-field" id="weddingFields">
-							<div class="form-row">
-								<div class="col">
-									<label for="weddingVenue">Venue for Wedding</label>
-									<input type="text" id="weddingVenue" name="weddingVenue" class="form-control" placeholder="Wedding venue location">
-								</div>
-								<div class="col">
-									<label for="guestsWedding">Number of Wedding Guests</label>
-									<input type="number" id="guestsWedding" name="guestsWedding" class="form-control" placeholder="Expected wedding guests" min="1">
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-	<div class="form-row">
-		<div class="col">
-			<label for="eventDate">Event Date <span class="required">*</span></label>
-			<input type="date" id="eventDate" name="eventDate" class="form-control" required>
-		</div>
-		<div class="col">
-			<label for="budget">Budget Range</label>
-			<input type="text" id="budget" name="eventBudget" class="form-control" placeholder="Enter your budget range" required>
-		</div>
-	</div>
-</div>
-						<div class="form-group">
-							<label for="additionalInfo">Additional Information</label>
-							<textarea id="additionalInfo" name="additionalInfo" class="form-control" rows="4" placeholder="Any special requirements, preferences, or additional details you'd like us to know..."></textarea>
-						</div>
-						<button type="submit" class="submit-btn">Submit Booking Request 😊</button>
-					</form>
+					<div class="text-center">
+						<h4 class="mb-4">Book Your Event</h4>
+						<p class="mb-4">Kindly provide us with the following information to get started with your event planning.</p>
+						<a href="https://docs.google.com/forms/d/e/1FAIpQLSePzAUoxFEWylZfgMNZFMGG0JVSkA5RYWqGS_TLzpcRRHzgaQ/viewform?usp=sharing&ouid=115933084034434591127" 
+						   target="_blank" 
+						   class="submit-btn">
+							Fill Out Booking Form 😊
+						</a>
+					</div>
 					<div style="text-align:center;margin-top:20px;color:#666;font-size:14px;">Looking forward to working with you! Thank you.</div>
 				</div>
 			</div>
 		`;
 		$('body').append(popupHtml);
 
-		// Init select styling for injected selects only (if plugin present)
-		if ($.fn.niceSelect) {
-			$('#bookingForm select').niceSelect();
-		}
 
-		// Helpers
-		function toggleConditionalFields() {
-			var eventType = $('#eventType').val();
-			var generalFields = $('#generalEventFields');
-			var weddingFields = $('#weddingFields');
-			generalFields.removeClass('show');
-			weddingFields.removeClass('show');
-			if (eventType === 'Wedding') {
-				weddingFields.addClass('show');
-			} else if (eventType && eventType !== 'Wedding') {
-				generalFields.addClass('show');
-			}
-		}
 
 		function openBookingForm() {
 			var overlay = document.getElementById('popupOverlay');

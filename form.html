@@ -152,10 +152,10 @@
         }
 
         .submit-btn {
-            width: 100%;
-            background:#764ba2;
+            display: inline-block;
+            background: #764ba2;
             color: white;
-            padding: 15px;
+            padding: 15px 30px;
             border: none;
             border-radius: 10px;
             font-size: 18px;
@@ -163,11 +163,14 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 10px;
+            text-decoration: none;
         }
 
         .submit-btn:hover {
             transform: translateY(-1px);
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            color: white;
+            text-decoration: none;
         }
 
         .required {
@@ -190,16 +193,7 @@
             }
         }
 
-        .conditional-field {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
 
-        .conditional-field.show {
-            display: block;
-            opacity: 1;
-        }
     </style>
 </head>
 <body>
@@ -218,94 +212,15 @@
                 <p>Kindly provide us with the following information</p>
             </div>
 
-            <form target="_blank" action="https://formsubmit.co/eventzbytwinkle@gmail.com" method="POST" id="bookingForm">
-                <!-- FormSubmit Configuration -->
-                <input type="hidden" name="_subject" value="New Event Booking Request">
-                <input type="hidden" name="_captcha" value="false">
-                
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col">
-                            <label for="fullName">Full Name <span class="required">*</span></label>
-                            <input type="text" id="fullName" name="fullName" class="form-control" placeholder="Enter your full name" required>
-                        </div>
-                        <div class="col">
-                            <label for="email">Email Address <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="your@email.com" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col">
-                            <label for="contact">Contact Number <span class="required">*</span></label>
-                            <input type="tel" id="contact" name="contact" class="form-control" placeholder="Your phone number" required>
-                        </div>
-                        <div class="col">
-                            <label for="eventType">Type of Event <span class="required">*</span></label>
-                            <select id="eventType" name="eventType" class="form-control" required onchange="toggleConditionalFields()">
-                                <option value="">Select event type</option>
-                                <option value="Wedding">Wedding</option>
-                                <option value="Corporate Event">Corporate Event</option>
-                                <option value="Birthday Party">Birthday Party</option>
-                                <option value="Conference">Conference</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- General Event Fields -->
-                <div class="form-group conditional-field" id="generalEventFields">
-                    <div class="form-row">
-                        <div class="col">
-                            <label for="eventVenue">Event Venue/Location</label>
-                            <input type="text" id="eventVenue" name="eventVenue" class="form-control" placeholder="Enter venue or location">
-                        </div>
-                        <div class="col">
-                            <label for="guestsEng">Number of Guests</label>
-                            <input type="number" id="guestsEng" name="guestsEng" class="form-control" placeholder="Expected number of guests" min="1">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Wedding Specific Fields -->
-                <div class="form-group conditional-field" id="weddingFields">
-                    <div class="form-row">
-                        <div class="col">
-                            <label for="weddingVenue">Venue for Wedding</label>
-                            <input type="text" id="weddingVenue" name="weddingVenue" class="form-control" placeholder="Wedding venue location">
-                        </div>
-                        <div class="col">
-                            <label for="guestsWedding">Number of Wedding Guests</label>
-                            <input type="number" id="guestsWedding" name="guestsWedding" class="form-control" placeholder="Expected wedding guests" min="1">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col">
-                            <label for="eventDate">Event Date <span class="required">*</span></label>
-                            <input type="date" id="eventDate" name="eventDate" class="form-control" required>
-                        </div>
-                        <div class="col">
-                            <label for="budget">Budget Range</label>
-                            <input type="number" id="budget" name="Budget" class="form-control" placeholder="0" min="1">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="additionalInfo">Additional Information</label>
-                    <textarea id="additionalInfo" name="additionalInfo" class="form-control" rows="4" placeholder="Any special requirements, preferences, or additional details you'd like us to know..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                    Submit Booking Request 😊
-                </button>
-            </form>
+            <div class="text-center">
+                <h4 class="mb-4">Book Your Event</h4>
+                <p class="mb-4">Kindly provide us with the following information to get started with your event planning.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSePzAUoxFEWylZfgMNZFMGG0JVSkA5RYWqGS_TLzpcRRHzgaQ/viewform?usp=sharing&ouid=115933084034434591127" 
+                   target="_blank" 
+                   class="submit-btn">
+                    Fill Out Booking Form 😊
+                </a>
+            </div>
 
             <div style="text-align: center; margin-top: 20px; color: #666; font-size: 14px;">
                 Looking forward to working with you! Thank you.
@@ -332,36 +247,7 @@
             }, 300);
         }
 
-        function toggleConditionalFields() {
-            const eventType = document.getElementById('eventType').value;
-            const generalFields = document.getElementById('generalEventFields');
-            const weddingFields = document.getElementById('weddingFields');
 
-            // Hide all conditional fields first
-            generalFields.classList.remove('show');
-            weddingFields.classList.remove('show');
-
-            // Show relevant fields based on event type
-            if (eventType === 'Wedding') {
-                weddingFields.classList.add('show');
-            } else if (eventType && eventType !== 'Wedding') {
-                generalFields.classList.add('show');
-            }
-        }
-
-        // Set minimum date to today
-        document.addEventListener('DOMContentLoaded', function() {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('eventDate').setAttribute('min', today);
-        });
-
-        // Handle form submission
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            // You can add custom validation here if needed
-            setTimeout(() => {
-                closeBookingForm();
-            }, 1000);
-        });
 
         // Close popup with Escape key
         document.addEventListener('keydown', function(e) {
