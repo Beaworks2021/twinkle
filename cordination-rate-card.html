@@ -105,29 +105,27 @@
           margin-bottom: 8px;
       }
 
-      .rate-placeholder {
-          align-items: center;
-          background: linear-gradient(135deg, #f7ecfb 0%, #f4f5fb 100%);
-          color: #8e3a94;
-          display: flex;
-          font-size: 18px;
-          font-weight: 600;
-          height: 320px;
-          justify-content: center;
-          letter-spacing: 0.04em;
-          text-align: center;
-          text-transform: uppercase;
+      .rate-photo {
+          border-radius: 14px;
+          box-shadow: 0 18px 50px rgba(5, 17, 69, 0.06);
+          height: 100%;
+          min-height: 320px;
+          overflow: hidden;
+          position: relative;
+      }
+
+      .rate-photo img {
+          height: 100%;
+          inset: 0;
+          object-fit: cover;
+          object-position: center 30%;
+          position: absolute;
           transition: transform 0.4s ease;
           width: 100%;
       }
 
-      .rr-work-item:hover .rate-placeholder {
+      .rate-photo:hover img {
           transform: scale(1.05);
-      }
-
-      .rate-gallery-note {
-          color: #54595f;
-          text-align: center;
       }
 
       @media (max-width: 767px) {
@@ -139,9 +137,8 @@
               padding: 24px;
           }
 
-          .rate-placeholder {
-              height: 220px;
-              font-size: 16px;
+          .rate-photo {
+              min-height: 260px;
           }
       }
    </style>
@@ -356,6 +353,13 @@
                   </div>
                </div>
                <div class="col-xl-6 col-lg-6 mb-30">
+                  <div class="rate-photo">
+                     <img src="assets/img/rate/12.jpeg" alt="Couple walking through a green floral arch in traditional attire" loading="lazy" decoding="async">
+                  </div>
+               </div>
+            </div>
+            <div class="row gx-30 flex-lg-row-reverse">
+               <div class="col-xl-6 col-lg-6 mb-30">
                   <div class="rate-package-card">
                      <div class="rate-eyebrow">Same Day Event</div>
                      <h4>Above 250 Guests</h4>
@@ -367,6 +371,13 @@
                      </ul>
                   </div>
                </div>
+               <div class="col-xl-6 col-lg-6 mb-30">
+                  <div class="rate-photo">
+                     <img src="assets/img/rate/3.jpeg" alt="Couple holding hands in front of a white archway" loading="lazy" decoding="async">
+                  </div>
+               </div>
+            </div>
+            <div class="row gx-30">
                <div class="col-xl-6 col-lg-6 mb-30">
                   <div class="rate-package-card">
                      <div class="rate-eyebrow">Different Days</div>
@@ -380,6 +391,13 @@
                   </div>
                </div>
                <div class="col-xl-6 col-lg-6 mb-30">
+                  <div class="rate-photo">
+                     <img src="assets/img/rate/7.jpeg" alt="Couple raising a toast at their reception" loading="lazy" decoding="async">
+                  </div>
+               </div>
+            </div>
+            <div class="row gx-30 flex-lg-row-reverse">
+               <div class="col-xl-6 col-lg-6 mb-30">
                   <div class="rate-package-card">
                      <div class="rate-eyebrow">Different Days</div>
                      <h4>Above 250 Guests</h4>
@@ -389,6 +407,11 @@
                         <li>5 coordinators each day</li>
                         <li>5 ushers each day</li>
                      </ul>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 mb-30">
+                  <div class="rate-photo">
+                     <img src="assets/img/rate/13.jpeg" alt="Bride and groom smiling at their wedding reception" loading="lazy" decoding="async">
                   </div>
                </div>
             </div>
@@ -461,38 +484,6 @@
                         <li>A contract will be signed by both parties after booking.</li>
                      </ol>
                   </div>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <section class="rr-work-area fix pb-120">
-         <div class="container custom-container-1">
-            <div class="row gx-30">
-               <div class="rr-section-title-wrapper mb-20 text-center">
-                  <span class="rr-section-subtitle">Image Spaces</span>
-                  <h3 class="rr-section-title">Successful Events Gallery</h3>
-               </div>
-               <p class="rate-gallery-note mb-40">Hover-ready placeholders have been added here so event images can be dropped in later using the same visual treatment as the homepage work section.</p>
-            </div>
-            <div class="row gx-30">
-               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
-                  <div class="rr-work-item"><div class="rr-work-thumb"><div class="rate-placeholder">Image Space 01</div></div></div>
-               </div>
-               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
-                  <div class="rr-work-item"><div class="rr-work-thumb"><div class="rate-placeholder">Image Space 02</div></div></div>
-               </div>
-               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
-                  <div class="rr-work-item"><div class="rr-work-thumb"><div class="rate-placeholder">Image Space 03</div></div></div>
-               </div>
-               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
-                  <div class="rr-work-item"><div class="rr-work-thumb"><div class="rate-placeholder">Image Space 04</div></div></div>
-               </div>
-               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
-                  <div class="rr-work-item"><div class="rr-work-thumb"><div class="rate-placeholder">Image Space 05</div></div></div>
-               </div>
-               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
-                  <div class="rr-work-item"><div class="rr-work-thumb"><div class="rate-placeholder">Image Space 06</div></div></div>
                </div>
             </div>
          </div>
